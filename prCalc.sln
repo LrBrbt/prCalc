@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32602.291
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "prCalc", "prCalc\prCalc.csproj", "{0BE9E24E-6750-4C9C-BD4F-EED9A5C60754}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BE9E24E-6750-4C9C-BD4F-EED9A5C60754}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BE9E24E-6750-4C9C-BD4F-EED9A5C60754}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BE9E24E-6750-4C9C-BD4F-EED9A5C60754}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BE9E24E-6750-4C9C-BD4F-EED9A5C60754}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {016C37C0-9212-4AC5-BF3B-2830C0520FE2}
+	EndGlobalSection
+EndGlobal
