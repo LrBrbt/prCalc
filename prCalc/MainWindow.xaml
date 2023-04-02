@@ -5,8 +5,522 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:prCalc"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Калькулятор" Height="350" Width="495">
+    <Grid Style="{StaticResource GridStyle}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="117*"/>
+            <ColumnDefinition Width="124*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="89*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="142*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.ColumnSpan="2" Background="#D7FFFC">
+            <Button Content="Вид" Background="Transparent" BorderThickness="0"/>
+            <Button Content="Правка" Background="Transparent"  BorderThickness="0"/>
+            <Button Content="Справка" Background="Transparent"  BorderThickness="0"/>
+        </Menu>
 
+        <GroupBox Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid>
+                <Label x:Name="TypeSolveTXT" Content="DEG"/>
+                <TextBox x:Name="ToSolveTXT" Text="0" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" FontSize="30" Margin="0,22,0,0"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Grid.Column="0">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="DegRB" Content="Градусы" IsChecked="True" Checked="DegRB_Checked" />
+                <Separator Background="Transparent" Width="5"/>
+                <RadioButton x:Name="RadRB" Content="Радианы" IsChecked="False" Checked="RadRB_Checked"/>
+                <Separator Background="Transparent" Width="5"/>
+                <RadioButton x:Name="GradRB" Content="Грады" IsChecked="False" Checked="GradRB_Checked"/>
+                <Separator Background="Transparent" Width="5"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Grid.Column="1">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="MC_BTN" Content="MC" Width="43">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Separator Background="Transparent" Width="5"/>
+                <Button x:Name="MR_BTN" Content="MR" Width="43">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Separator Background="Transparent" Width="5"/>
+                <Button x:Name="MS_BTN" Content="MS" Width="43">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Separator Background="Transparent" Width="5"/>
+                <Button x:Name="MPlus_BTN" Content="M+" Width="43">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Separator Background="Transparent" Width="5"/>
+                <Button x:Name="MMinusBTN" Content="M-" Width="43">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="3" Grid.Column="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="47*"/>
+                    <ColumnDefinition Width="47*"/>
+                    <ColumnDefinition Width="47*"/>
+                    <ColumnDefinition Width="47*"/>
+                    <ColumnDefinition Width="47*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="DeleteBTN" Style="{StaticResource ButtonStyle}" Grid.Row="0" Grid.Column="0" Click="DeleteBTN_Click">
+                    <Image Source="./images/back.ico"/>
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Button x:Name="CE_BTN" Style="{StaticResource ButtonStyle}" Content="CE" Grid.Row="0" Grid.Column="1" Margin="3,3,3,3" Click="CE_BTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="C_BTN" Style="{StaticResource ButtonStyle}" Content="C" Grid.Row="0" Grid.Column="2" Click="C_BTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="GubinBTN" Style="{StaticResource ButtonStyle}" Content="±" Grid.Row="0" Grid.Column="3" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="SqrtBTN" Style="{StaticResource ButtonStyle}" Content="√" Grid.Row="0" Grid.Column="4" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Button x:Name="SevenBTN" Style="{StaticResource ButtonStyle}" Content="7" Grid.Row="1" Grid.Column="0" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="EightBTN" Style="{StaticResource ButtonStyle}" Content="8" Grid.Row="1" Grid.Column="1" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="NineBTN" Style="{StaticResource ButtonStyle}" Content="9" Grid.Row="1" Grid.Column="2" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="DivisionBTN" Style="{StaticResource ButtonStyle}" Content="/" Grid.Row="1" Grid.Column="3" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="PercentBTN" Style="{StaticResource ButtonStyle}" Content="%" Grid.Row="1" Grid.Column="4" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Button x:Name="FourBTN" Style="{StaticResource ButtonStyle}" Content="4" Grid.Row="2" Grid.Column="0" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="FiveBTN" Style="{StaticResource ButtonStyle}" Content="5" Grid.Row="2" Grid.Column="1" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="SixBTN" Style="{StaticResource ButtonStyle}" Content="6" Grid.Row="2" Grid.Column="2" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="MultiplyBTN" Style="{StaticResource ButtonStyle}" Content="*" Grid.Row="2" Grid.Column="3" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="Minus1PowBTN" Style="{StaticResource ButtonStyle}" Content="1/x" Grid.Row="2" Grid.Column="4" Click="Minus1PowBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Button x:Name="OneBTN" Style="{StaticResource ButtonStyle}" Content="1" Grid.Row="3" Grid.Column="0" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="TwoBTN" Style="{StaticResource ButtonStyle}" Content="2" Grid.Row="3" Grid.Column="1" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="ThreeBTN" Style="{StaticResource ButtonStyle}" Content="3" Grid.Row="3" Grid.Column="2" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="MinusBTN" Style="{StaticResource ButtonStyle}" Content="-" Grid.Row="3" Grid.Column="3" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="SolveBTN" Style="{StaticResource ButtonStyle}" Content="=" Grid.Row="3" Grid.Column="4" Grid.RowSpan="2" Click="SolveBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Button x:Name="ZeroBTN" Style="{StaticResource ButtonStyle}" Content="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="PointBTN" Style="{StaticResource ButtonStyle}" Content="," Grid.Row="4" Grid.Column="2" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="PlusBTN" Style="{StaticResource ButtonStyle}" Content="+" Grid.Row="4" Grid.Column="3" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="3" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="47*"/>
+                    <ColumnDefinition Width="47*"/>
+                    <ColumnDefinition Width="47*"/>
+                    <ColumnDefinition Width="47*"/>
+                    <ColumnDefinition Width="47*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="28"/>
+                </Grid.RowDefinitions>
+
+                <Button Style="{StaticResource ButtonStyle}" Background="#D7FFFC" Grid.Row="0" Grid.Column="0"/>
+
+
+                <Button x:Name="InvBTN" Style="{StaticResource ButtonStyle}"  Content="Inv" Grid.Row="0" Grid.Column="1" Click="MeowBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="LnBTN" Style="{StaticResource ButtonStyle}" Content="ln" Grid.Row="0" Grid.Column="2" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="OpenBracketBTN" Style="{StaticResource ButtonStyle}" Content="(" Grid.Row="0" Grid.Column="3" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="CloseBracketBTN" Style="{StaticResource ButtonStyle}" Content=")" Grid.Row="0" Grid.Column="4" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Button x:Name="IntBTN" Style="{StaticResource ButtonStyle}" Content="Int" Grid.Row="1" Grid.Column="0" Click="MeowBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="SinHBTN" Style="{StaticResource ButtonStyle}" Content="sinh" Grid.Row="1" Grid.Column="1" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="SinBTN" Style="{StaticResource ButtonStyle}" Content="sin" Grid.Row="1" Grid.Column="2" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="xPow2BTN" Style="{StaticResource ButtonStyle}" Content="x²" Grid.Row="1" Grid.Column="3" Click="xPow2BTN_Click" >
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="FactorialBTN" Style="{StaticResource ButtonStyle}" Content="n!" Grid.Row="1" Grid.Column="4" Click="FactorialBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Button x:Name="DmsBTN" Style="{StaticResource ButtonStyle}" Content="dms" Grid.Row="2" Grid.Column="0" Click="MeowBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="CoshBTN" Style="{StaticResource ButtonStyle}" Content="cosh" Grid.Row="2" Grid.Column="1" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="CosBTN" Style="{StaticResource ButtonStyle}" Content="cos" Grid.Row="2" Grid.Column="2" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="xPowYBTN" Style="{StaticResource ButtonStyle}" Content="x^y" Grid.Row="2" Grid.Column="3" Click="xPowYBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="ySqrtXBTN" Style="{StaticResource ButtonStyle}" Content="y√x" Grid.Row="2" Grid.Column="4" Click="ySqrtXBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Button x:Name="PiBTN" Style="{StaticResource ButtonStyle}" Content="𝝅" Grid.Row="3" Grid.Column="0" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="TanhBTN" Style="{StaticResource ButtonStyle}" Content="tanh" Grid.Row="3" Grid.Column="1" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="TanBTN" Style="{StaticResource ButtonStyle}" Content="tan" Grid.Row="3" Grid.Column="2" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="xPow3BTN" Style="{StaticResource ButtonStyle}" Content="x³" Grid.Row="3" Grid.Column="3" Click="xPow3BTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="_1SqrtXBTN" Style="{StaticResource ButtonStyle}" Content="1√x" Grid.Row="3" Grid.Column="4" Click="_1SqrtXBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                <Button x:Name="FEBTN" Style="{StaticResource ButtonStyle}" Content="F-E" Grid.Row="4" Grid.Column="0" Click="MeowBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="ExpBTN" Style="{StaticResource ButtonStyle}" Content="Exp" Grid.Row="4" Grid.Column="1" Click="NumberButton_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="ModBTN" Style="{StaticResource ButtonStyle}" Content="Mod" Grid.Row="4" Grid.Column="2" Click="MeowBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="LogBTN" Style="{StaticResource ButtonStyle}" Content="log" Grid.Row="4" Grid.Column="3" Click="MeowBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="TenPowXBTN" Style="{StaticResource ButtonStyle}" Content="10^x" Grid.Row="4" Grid.Column="4" Click="TenPowXBTN_Click">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFCFCFC"/>
+                            <GradientStop Color="#FFD7FFFC" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

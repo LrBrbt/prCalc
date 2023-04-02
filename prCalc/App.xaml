@@ -4,6 +4,13 @@
              xmlns:local="clr-namespace:prCalc"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="./ButtonStyle.xaml"/>
+                <ResourceDictionary Source="./GridStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
