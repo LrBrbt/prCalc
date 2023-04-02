@@ -210,6 +210,7 @@ namespace prCalc
         private void DeleteBTN_Click(object sender, RoutedEventArgs e)
         {
             ToSolveTXT.Text = ToSolveTXT.Text.Remove(ToSolveTXT.Text.Length - 1);
+            forSolve = forSolve.Remove(forSolve.Length - 1);
         }
     }
 }
